@@ -1,7 +1,6 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/butchr/.myscripts
 
 export PANEL_FIFO="/tmp/panel-fifo"
-#export PATH="$PATH:$HOME/npm/bin"
 #export TERM="st-256color"
 export TERM="screen"
 #export TERM="xterm-256color"
