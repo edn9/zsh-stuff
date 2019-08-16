@@ -27,7 +27,7 @@ alias cdd='cd ~/Downloads'
 alias f='fff'
 alias cdm='cd ~/MEGA/MEGAsync/'
 alias cdg='cd ~/MEGA/MEGAsync/docs/gnucash/'
-alias cdd='cd ~/MEGA/MEGAsync/docs'
+alias cddo='cd ~/MEGA/MEGAsync/docs'
 alias cdn='cd ~/MEGA/MEGAsync/docs/updates/'
 alias remove='sudo xbps-remove -R'
 alias search='xbps-query -Rs'
@@ -49,7 +49,6 @@ alias ytm='mpv --ytdl-format=18 $1'
 alias nt='notify-send'
 alias clone='git clone'
 alias sudo='sudo '
-alias lip='ip -f inet -o addr show enp2s0 | grep --color=never -oP "(?<=inet )[0-9.]+"'
 alias load='xrdb -load ~/.Xresources'
 
 
@@ -170,20 +169,3 @@ unsplash() {
 		wget --quiet -O /tmp/unsplash/$i.jpg "https://unsplash.it/1920/1080/?random"
 	done
 }
-
-PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/butchr/.myscripts
-
-export PANEL_FIFO="/tmp/panel-fifo"
-#export PATH="$PATH:$HOME/npm/bin"
-#export TERM="st-256color"
-export TERM="screen"
-#export TERM="xterm-256color"
-
-export ANDROID_HOME=~/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" #This loads nvm
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use #This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
