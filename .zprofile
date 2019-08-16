@@ -2,7 +2,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_
 
 export PANEL_FIFO="/tmp/panel-fifo"
 #export TERM="st-256color"
-export TERM="screen"
 #export TERM="xterm-256color"
 
 export ANDROID_HOME=~/Android/Sdk
