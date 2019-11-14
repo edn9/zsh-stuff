@@ -2,14 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/butchr/.oh-my-zsh"
+export ZSH="/home/"$USER"/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
-#ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -114,13 +113,15 @@ SPACESHIP_PROMPT_ORDER=(
 )
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
+#SPACESHIP_CHAR_SYMBOL="-"
+SPACESHIP_CHAR_SYMBOL=">"
 SPACESHIP_CHAR_SUFFIX=" "
 
-source $HOME/.functions
+source ~/.zfunctions
+source ~/.zprofile
 
-### Added by Zplugin's installer
-source '/home/butchr/.zplugin/bin/zplugin.zsh'
+### Added by Zplugin's install
+source '/home/'$USER'/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
@@ -129,6 +130,3 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-completions
 zplugin light zdharma/fast-syntax-highlighting
 zplugin light zsh-users/zsh-history-substring-search
-
-export TERM="screen"
-

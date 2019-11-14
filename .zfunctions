@@ -1,0 +1,129 @@
+# Autostart
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = "/dev/tty1" ]]; then
+        exec startx
+fi
+
+# Binds
+
+#everytime you create a new file, only you user will have the -rw-r--r-- permission.
+#umask 0077
+
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+export HISTCONTROL=ignoreboth
+
+# Aliases
+
+alias ls='ls --color=auto'
+alias cdd='cd ~/Downloads'
+
+alias vagrant="~/Downloads/vagrant/vagrant"
+alias scrp="scrcpy --max-size 1024 --bit-rate 2M -S &!"
+alias py3s="ip addr | grep wlp && python3 -m http.server"
+alias f='fff'
+
+alias cdg='cd ~/MEGA/MEGAsync/docs/gnucash/'
+alias cdc='cd ~/MEGA/MEGAsync/docs'
+alias cdp='cd ~/MEGA/MEGAsync/programação/'
+
+alias remove='sudo xbps-remove -R'
+alias search='xbps-query -Rs'
+alias install='sudo xbps-install -S'
+alias sinstall='sudo xbps-install --repository=hostdir/binpkgs'
+alias rns='sudo xbps-remove -Oo'
+alias update='sudo xbps-install -Suvy'
+alias instsrc='sudo xbps-install --repository=hostdir/binpkgs'
+
+alias xcp="pwd | xclip -selection clipboard"
+
+alias ytb='mpv --ytdl-format=22 $1'
+alias ytm='mpv --ytdl-format=18 $1'
+alias ytd='youtube-dl'
+
+alias nt='notify-send'
+
+alias reboot='sudo reboot'
+alias poweroff='sudo poweroff'
+alias shutdown='sudo shutdown -h now'
+alias mount='sudo mount'
+alias umount='sudo umount'
+alias zzz='sudo zzz'
+
+
+#alias killm='mpvc -k'
+
+# Compacting and extracting
+
+extract() {
+if [[ -f $1 ]]; then
+	case "$1" in
+		*.tar.bz2) tar xvjf "$1";;
+		*.tar.gz) tar xvzf "$1";;
+		*.tar.xz) tar xvf "$1";;
+		*.tar) tar xvf "$1";;
+		*.tgz) tar xvf "$1";;
+		*.xz) tar xvf "$1";;
+		*.gz) gunzip "$1";;
+		*.zip) unzip "$1";;
+		*.rar) unrar x "$1";;
+		*.bz2) bzip2 -d "$1" ;;
+		*.lzma) unlzma "$1" ;;
+		*.Z) uncompress "$1" ;;
+		*.7z) 7z x "$1" ;;
+		*.deb) ar x ./"$1" ;;
+		*) echo "'$1' cannot be extracted via extract."
+	esac
+else
+	echo "'$1' is not a valid file"
+fi
+}
+
+# Compress a file
+
+compress() {
+	if [[ -n "$1" ]]; then
+		FILE=$1
+		case $FILE in
+			*.tar ) shift && tar cf $FILE $* ;;
+			*.tar.bz2 ) shift && tar cjf $FILE $* ;;
+			*.tar.xz ) shift && tar cjf $FILE $* ;;
+			*.tar.gz ) shift && tar czf $FILE $* ;;
+			*.tgz ) shift && tar czf $FILE $* ;;
+			*.zip ) shift && zip -r $FILE $* ;;
+			*.rar ) shift && rar $FILE $* ;;
+		esac
+	else
+		echo "usage: compress <foo.tar.gz> ./foo ./bar"
+	fi
+}
+
+
+# Miscellaneous
+
+ram() {
+  local sum
+  local items
+  local app="$1"
+  if [ -z "$app" ]; then
+    echo "First argument - pattern to grep from processes"
+  else
+    sum=0
+    for i in `ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'`; do
+      sum=$(($i + $sum))
+    done
+    sum=$(echo "scale=2; $sum / 1024.0" | bc)
+    if [[ $sum != "0" ]]; then
+      echo "${fg[blue]}${app}${reset_color} uses ${fg[green]}${sum}${reset_color} MBs of RAM."
+    else
+      echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
+    fi
+  fi
+}
+
+mem() {
+	total=$(free -m | awk 'NR==2 {print $2}')
+	used=$(free -m | awk 'NR==2 {print $3}')
+
+	printf "Memory Usage\n\nTotal: $total\nUsed: $used\n\n"
+}
+
