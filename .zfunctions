@@ -17,7 +17,7 @@ export HISTCONTROL=ignoreboth
 alias ls='ls --color=auto'
 alias cdd='cd ~/Downloads'
 
-alias vagrant="~/Downloads/vagrant/vagrant"
+alias dc="docker-compose"
 alias scrp="scrcpy --max-size 1024 --bit-rate 2M -S &!"
 alias py3s="ip addr | grep wlp && python3 -m http.server"
 alias f='fff'
